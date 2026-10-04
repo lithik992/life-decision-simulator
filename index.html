@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Life Decision Simulator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        DecisionX
+    </div>
+
+    <nav>
+        <a href="#simulator">Simulator</a>
+        <a href="#result">Result</a>
+        <a href="#history">History</a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="tag">
+            SMART DECISION SIMULATOR
+        </span>
+
+        <h1>
+            Think Better.
+            <span>Decide Smarter.</span>
+        </h1>
+
+        <p>
+            Evaluate your choices, understand the risks,
+            and explore possible outcomes before making a decision.
+        </p>
+
+        <a href="#simulator" class="hero-btn">
+            Start Simulation
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="simulator-section" id="simulator">
+
+    <div class="section-title">
+
+        <h2>
+            Make Your Decision
+        </h2>
+
+        <p>
+            Rate each factor honestly from 1 to 10.
+        </p>
+
+    </div>
+
+
+    <div class="simulator-card">
+
+        <div class="form-group full-width">
+
+            <label for="decision">
+                What decision are you considering?
+            </label>
+
+            <input
+                type="text"
+                id="decision"
+                placeholder="Example: Should I join this internship?"
+                maxlength="100"
+            >
+
+        </div>
+
+
+        <div class="rating-group">
+
+            <div class="rating-header">
+
+                <label for="importance">
+                    Importance
+                </label>
+
+                <span id="importanceValue">
+                    5
+                </span>
+
+            </div>
+
+            <p>
+                How important is this decision?
+            </p>
+
+            <input
+                type="range"
+                id="importance"
+                min="1"
+                max="10"
+                value="5"
+            >
+
+            <div class="range-labels">
+                <span>Low</span>
+                <span>High</span>
+            </div>
+
+        </div>
+
+
+        <div class="rating-group">
+
+            <div class="rating-header">
+
+                <label for="benefit">
+                    Expected Benefit
+                </label>
+
+                <span id="benefitValue">
+                    5
+                </span>
+
+            </div>
+
+            <p>
+                How much benefit could you gain?
+            </p>
+
+            <input
+                type="range"
+                id="benefit"
+                min="1"
+                max="10"
+                value="5"
+            >
+
+            <div class="range-labels">
+                <span>Low</span>
+                <span>High</span>
+            </div>
+
+        </div>
+
+
+        <div class="rating-group">
+
+            <div class="rating-header">
+
+                <label for="risk">
+                    Risk Level
+                </label>
+
+                <span id="riskValue">
+                    5
+                </span>
+
+            </div>
+
+            <p>
+                How risky could this decision be?
+            </p>
+
+            <input
+                type="range"
+                id="risk"
+                min="1"
+                max="10"
+                value="5"
+            >
+
+            <div class="range-labels">
+                <span>Low</span>
+                <span>High</span>
+            </div>
+
+        </div>
+
+
+        <div class="rating-group">
+
+            <div class="rating-header">
+
+                <label for="time">
+                    Time Required
+                </label>
+
+                <span id="timeValue">
+                    5
+                </span>
+
+            </div>
+
+            <p>
+                How much time will it require?
+            </p>
+
+            <input
+                type="range"
+                id="time"
+                min="1"
+                max="10"
+                value="5"
+            >
+
+            <div class="range-labels">
+                <span>Low</span>
+                <span>High</span>
+            </div>
+
+        </div>
+
+
+        <div class="rating-group">
+
+            <div class="rating-header">
+
+                <label for="urgency">
+                    Urgency
+                </label>
+
+                <span id="urgencyValue">
+                    5
+                </span>
+
+            </div>
+
+            <p>
+                How urgently must you decide?
+            </p>
+
+            <input
+                type="range"
+                id="urgency"
+                min="1"
+                max="10"
+                value="5"
+            >
+
+            <div class="range-labels">
+                <span>Low</span>
+                <span>High</span>
+            </div>
+
+        </div>
+
+
+        <div class="rating-group">
+
+            <div class="rating-header">
+
+                <label for="confidence">
+                    Confidence
+                </label>
+
+                <span id="confidenceValue">
+                    5
+                </span>
+
+            </div>
+
+            <p>
+                How confident are you about this choice?
+            </p>
+
+            <input
+                type="range"
+                id="confidence"
+                min="1"
+                max="10"
+                value="5"
+            >
+
+            <div class="range-labels">
+                <span>Low</span>
+                <span>High</span>
+            </div>
+
+        </div>
+
+
+        <button
+            id="simulateBtn"
+            class="simulate-btn"
+        >
+            Simulate Decision
+        </button>
+
+    </div>
+
+</section>
+
+
+<section
+    class="result-section"
+    id="result"
+>
+
+    <div class="section-title">
+
+        <h2>
+            Your Decision Result
+        </h2>
+
+        <p>
+            Here's what the decision engine calculated.
+        </p>
+
+    </div>
+
+
+    <div
+        id="resultContent"
+        class="result-container hidden"
+    >
+
+        <div class="score-card">
+
+            <div class="score-circle">
+
+                <span id="score">
+                    0
+                </span>
+
+                <small>
+                    / 100
+                </small>
+
+            </div>
+
+            <h2 id="recommendation">
+                -
+            </h2>
+
+            <p id="decisionText">
+                -
+            </p>
+
+        </div>
+
+
+        <div class="analysis-grid">
+
+            <div class="analysis-card">
+
+                <span class="analysis-icon">
+                    R
+                </span>
+
+                <h3>
+                    Risk Level
+                </h3>
+
+                <strong id="riskLevel">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="analysis-card">
+
+                <span class="analysis-icon">
+                    C
+                </span>
+
+                <h3>
+                    Confidence
+                </h3>
+
+                <strong id="confidenceLevel">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="analysis-card">
+
+                <span class="analysis-icon">
+                    B
+                </span>
+
+                <h3>
+                    Benefit
+                </h3>
+
+                <strong id="benefitLevel">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="meter-card">
+
+            <div class="meter-header">
+
+                <span>
+                    Decision Strength
+                </span>
+
+                <strong id="meterText">
+                    0%
+                </strong>
+
+            </div>
+
+            <div class="meter">
+
+                <div
+                    id="meterFill"
+                    class="meter-fill"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="future-section">
+
+            <h2>
+                Possible Futures
+            </h2>
+
+            <div class="future-grid">
+
+                <div class="future-card best">
+
+                    <span class="future-label">
+                        BEST CASE
+                    </span>
+
+                    <h3>
+                        If Everything Goes Well
+                    </h3>
+
+                    <p id="bestCase">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div class="future-card likely">
+
+                    <span class="future-label">
+                        MOST LIKELY
+                    </span>
+
+                    <h3>
+                        If Things Go Normally
+                    </h3>
+
+                    <p id="likelyCase">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div class="future-card worst">
+
+                    <span class="future-label">
+                        WORST CASE
+                    </span>
+
+                    <h3>
+                        If Things Go Wrong
+                    </h3>
+
+                    <p id="worstCase">
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="emptyResult"
+        class="empty-result"
+    >
+
+        <div class="empty-icon">
+            ?
+        </div>
+
+        <h3>
+            No decision simulated yet
+        </h3>
+
+        <p>
+            Complete the simulator above to see your result.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section
+    class="history-section"
+    id="history"
+>
+
+    <div class="section-title">
+
+        <h2>
+            Decision History
+        </h2>
+
+        <p>
+            Review your previous simulations.
+        </p>
+
+    </div>
+
+
+    <div class="history-card">
+
+        <div class="history-header">
+
+            <h3>
+                Previous Decisions
+            </h3>
+
+            <button
+                id="clearHistoryBtn"
+                class="clear-btn"
+            >
+                Clear History
+            </button>
+
+        </div>
+
+
+        <div id="historyContainer">
+
+            <div class="history-empty">
+                No previous decisions yet.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        © 2026 DecisionX | Life Decision Simulator
+    </p>
+
+    <p class="footer-note">
+        This simulator provides guidance, not professional advice.
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
